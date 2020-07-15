@@ -1,0 +1,6 @@
+{
+    "git.allowForcePush": true,
+    "git.alwaysShowStagedChangesResourceGroup": true,
+    "git.autofetch": true,
+    "github.remoteName": "https://github.com/zainulreza/ZainBlog.git"
+}
