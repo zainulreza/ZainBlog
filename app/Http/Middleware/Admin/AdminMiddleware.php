@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Middleware\Author;
+namespace App\Http\Middleware\Admin;
 
 use Closure;
 
-class Middleware
+class AdminMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,7 +15,7 @@ class Middleware
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->role->id ==2)
+        if (Auth::check() && Auth::user()->role->id ==1)
         {
 
             return $next($request);
@@ -24,5 +24,5 @@ class Middleware
 
             return redirect()->route( route, 'login');
         }
-    }    
+    }
 }

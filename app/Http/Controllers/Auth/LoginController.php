@@ -1,9 +1,7 @@
 <?php
-use Auth; 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller\Auth;
-use App\Providers\RouteServiceProvider\Auth;
+use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -26,7 +24,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo
+    protected $redirectTo;
 
     /**
      * Create a new controller instance.
@@ -34,16 +32,16 @@ class LoginController extends Controller
      * @return void
      */
     public function __construct()
-    
+
     {
-        if (\Auth::check() && \Auth::user()->role->id ==1)
+        if (\Auth::check() && \Auth::user()->role && \Auth::user()->role->id ==1)
         {
             $this->redirectTo = route('admin.dashboard');
         }else
         {
             $this->redirectTo = route('author.dashboard');
         }
-        
+
         $this->middleware( 'guest')->except('logout');
     }
 }

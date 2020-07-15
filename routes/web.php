@@ -23,17 +23,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-//Route::get('register', 'Auth\RegisterController')->name('admin.dashbaord');
-
 Route::get('/home', 'HomeController@index')->name('home');
 
-//Route::group(['as'=>'admin','prefix'=>'admin','namespace'=>'Admin','middleware'=>['auth','admin']], function (){
+Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'=>['auth','admin']], function (){
 
-   // route::get('dashboard','DashboardController@index')->name('dashboard');
-//});
+   route::get('dashboard','DashboardController@index')->name('dashboard');
+});
 
-//Route::group(['as'=>'author','prefix'=>'author','namespace'=>'Author','middleware'=>['auth','author']], function (){
+Route::group(['as'=>'author.','prefix'=>'author','namespace'=>'Author','middleware'=>['auth','author']], function (){
 
-    //route::get('dashboard','DashboardController@index')->name('dashboard');
+    route::get('dashboard','DashboardController@index')->name('dashboard');
 
-//});
+});
